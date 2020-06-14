@@ -1,5 +1,11 @@
-import React from "react";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+  Switch,
+  Route,
+  BrowserRouter as Router,
+  useHistory,
+  useLocation
+} from "react-router-dom";
 import "./styles.css";
 import Header from "./component/header";
 import routes from "./routes/routes";
@@ -10,6 +16,15 @@ import ListRoom from "./pages/listRoom";
 import Bookings from "./pages/bookings";
 
 export default function App() {
+  const location = useLocation();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      history.push("/home");
+    }
+  });
+
   return (
     <div className="App">
       <Router>
