@@ -12,33 +12,83 @@ import { useHistory } from "react-router-dom";
 import customers from "../dataBase/customerDb";
 
 const BookRoom = () => {
+
+
   const [name, setName] = useState("");
   const [fromTime, setFromTime] = useState("");
   const [toTime, setToTime] = useState("");
-  const [bookedRooms, setBookedRooms] = useState([]);
+  const [date, setDate] = useState("");
+
+  var isBookingAllowed = true;
 
   const onNameChange = event => setName(event.target.value);
   const onFromTimeChange = event => setFromTime(event.target.value);
   const onToTimeChange = event => setToTime(event.target.value);
+  const onDateChange = event => setDate(event.target.value);
+
 
   const cancel = () => {
     history.push("/list-room");
   };
 
-  const confirmBooking = event => {
-    if (!name || !fromTime || !toTime) {
-      event.preventDefault();
-      alert("Please fill all the details");
-    } else {
-      var bookingTime = {
-        roomId: window.localStorage.getItem("roomIndex"),
+  const chanageState = () => {
+    if(isBookingAllowed) {
+      isBookingAllowed = !isBookingAllowed;
+    }
+  };
+
+  const executeBooking = () => {
+    if (isBookingAllowed) {
+      var bookedRooms = {
+        roomId: parseInt(window.localStorage.getItem("roomIndex"), 10) + 1,
+        date,
         fromTime,
         toTime
       };
-      setBookedRooms([bookingTime]);
       var bookingDetail = { name, bookedRooms };
       customers.push(bookingDetail);
+      history.push("/list-room");
       console.log(customers);
+    } else {
+      alert("Room Not Available");
+    }
+  };
+
+  const confirmBooking = () => {
+    console.log(name, date, fromTime, toTime);
+    if (!name || !date || !fromTime || !toTime) {
+      alert("Please fill all the details");
+    } else {
+      if (toTime > fromTime) {
+        for (var i = 0; i < customers.length; i++) {
+          if (customers[i].bookedRooms.date === date) {
+            if (
+              fromTime >= customers[i].bookedRooms.fromTime &&
+              fromTime < customers[i].bookedRooms.toTime
+            ) {
+              console.log(1, isBookingAllowed);
+              chanageState()
+              break;
+            } else if (
+              toTime > customers[i].bookedRooms.fromTime &&
+              toTime <= customers[i].bookedRooms.toTime
+            ) {
+              console.log(2, isBookingAllowed);
+              chanageState()
+              break;
+            } else if (
+              fromTime < customers[i].bookedRooms.fromTime &&
+              toTime > customers[i].bookedRooms.toTime
+            ) {
+              console.log(3,isBookingAllowed);
+              chanageState()
+            }
+          }
+        }
+        executeBooking();
+      } else {
+        alert(`"To Time" should be greater than "From Time"`);
+      }
     }
   };
 
@@ -110,11 +160,17 @@ const BookRoom = () => {
                     required
                   />
                 </Form.Group>
+
+                <Form.Group controlId="fromTime">
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control onChange={onDateChange} type="date" required />
+                </Form.Group>
+
                 <Form.Group controlId="fromTime">
                   <Form.Label>From</Form.Label>
                   <Form.Control
                     onChange={onFromTimeChange}
-                    type="datetime-local"
+                    type="time"
                     required
                   />
                 </Form.Group>
@@ -123,7 +179,7 @@ const BookRoom = () => {
                   <Form.Label>To</Form.Label>
                   <Form.Control
                     onChange={onToTimeChange}
-                    type="datetime-local"
+                    type="time"
                     required
                   />
                 </Form.Group>

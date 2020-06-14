@@ -55,7 +55,6 @@ const ListRoom = () => {
                     <b>Amenities Available</b>
                     <Container>
                       <Row>
-                        {/* <Col> */}
                         {room.amenitiesAvailable.map(
                           (amenity, amenityIndex) => {
                             return (
@@ -69,7 +68,6 @@ const ListRoom = () => {
                             );
                           }
                         )}
-                        {/* </Col> */}
                       </Row>
                     </Container>
                   </ListGroup>

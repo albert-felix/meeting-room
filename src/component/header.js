@@ -33,6 +33,13 @@ const Header = () => {
             >
               Create room
             </NavLink>
+            <NavLink
+              className={"nav-link"}
+              activeClassName={"active"}
+              to={routes.bookings}
+            >
+              Bookings
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

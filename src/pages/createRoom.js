@@ -40,7 +40,6 @@ const CreateRoom = () => {
       amenitiesAvailable.length === 0 ||
       !pricePerHour
     ) {
-      event.preventDefault();
       alert("Please fill all the details");
     } else {
       rooms.push(newRoom);

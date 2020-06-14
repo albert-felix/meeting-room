@@ -1,13 +1,14 @@
 const customers = [
   {
-    name: "Albert",
-    bookedRooms: [
+    name: "Albert Felix",
+    bookedRooms: 
       {
         roomId: 1,
-        fromTime: "10:00 am",
-        toTime: "11:00 am"
+        date: "2020-06-14",
+        fromTime: "10:00",
+        toTime: "11:00"
       }
-    ]
+    
   }
 ];
 

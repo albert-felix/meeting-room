@@ -7,6 +7,7 @@ import Home from "./pages/home";
 import BookRoom from "./pages/bookRoom";
 import CreateRoom from "./pages/createRoom";
 import ListRoom from "./pages/listRoom";
+import Bookings from "./pages/bookings";
 
 export default function App() {
   return (
@@ -21,6 +22,9 @@ export default function App() {
           </Route>
           <Route path="/create-room">
             <CreateRoom />
+          </Route>
+          <Route path="/bookings">
+            <Bookings />
           </Route>
         </Switch>
       </Router>
