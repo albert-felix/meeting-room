@@ -6,8 +6,8 @@ import routes from "../routes/routes";
 const Header = () => {
   return (
     <div>
-      <Navbar bg="light" variant="light" expand="lg">
-        <Navbar.Brand>Portfolio</Navbar.Brand>
+      <Navbar bg="info" variant="dark" expand="lg">
+        <Navbar.Brand>Meeting Room</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -18,19 +18,13 @@ const Header = () => {
             >
               Home
             </NavLink>
-            <NavLink
-              className={"nav-link"}
-              activeClassName={"active"}
-              to={routes.bookRoom}
-            >
-              Book room
-            </NavLink>
+
             <NavLink
               className={"nav-link"}
               activeClassName={"active"}
               to={routes.listRoom}
             >
-              List room
+              Rooms
             </NavLink>
             <NavLink
               className={"nav-link"}
@@ -42,6 +36,7 @@ const Header = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      <br/>
     </div>
   );
 };
