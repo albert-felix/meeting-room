@@ -1,7 +1,7 @@
 const rooms = [
   {
-    roomName: "Hall-1",
-    seatsAvailable: 50,
+    roomName: "Aryabhatta Hall",
+    seatsAvailable: 100,
     amenitiesAvailable: [
       "Projector",
       "Screen",
@@ -10,10 +10,21 @@ const rooms = [
       "WhiteBoard",
       "PowerBackup"
   ],
+    pricePerHour: 1000
+  },
+  {
+    roomName: "Raman Hall",
+    seatsAvailable: 50,
+    amenitiesAvailable: [
+      "Projector",
+      "Screen",
+      "Wifi",
+      "WhiteBoard"
+  ],
     pricePerHour: 500
   },
   {
-    roomName: "Hall-2",
+    roomName: "Ganges",
     seatsAvailable: 25,
     amenitiesAvailable: [
       "Projector",
@@ -24,7 +35,18 @@ const rooms = [
     pricePerHour: 300
   },
   {
-    roomName: "Hall-2",
+    roomName: "Library-Conference",
+    seatsAvailable: 50,
+    amenitiesAvailable: [
+      "Projector",
+      "Screen",
+      "Wifi",
+      "WhiteBoard"
+  ],
+    pricePerHour: 500
+  },
+  {
+    roomName: "Cauvery",
     seatsAvailable: 25,
     amenitiesAvailable: [
       "Projector",
@@ -34,39 +56,7 @@ const rooms = [
   ],
     pricePerHour: 300
   },
-  {
-    roomName: "Hall-2",
-    seatsAvailable: 25,
-    amenitiesAvailable: [
-      "Projector",
-      "Screen",
-      "Wifi",
-      "WhiteBoard"
-  ],
-    pricePerHour: 300
-  },
-  {
-    roomName: "Hall-2",
-    seatsAvailable: 25,
-    amenitiesAvailable: [
-      "Projector",
-      "Screen",
-      "Wifi",
-      "WhiteBoard"
-  ],
-    pricePerHour: 300
-  },
-  {
-    roomName: "Hall-2",
-    seatsAvailable: 25,
-    amenitiesAvailable: [
-      "Projector",
-      "Screen",
-      "Wifi",
-      "WhiteBoard"
-  ],
-    pricePerHour: 300
-  }
+
 ];
 
 

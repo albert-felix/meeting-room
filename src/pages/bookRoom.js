@@ -12,8 +12,6 @@ import { useHistory } from "react-router-dom";
 import customers from "../dataBase/customerDb";
 
 const BookRoom = () => {
-
-
   const [name, setName] = useState("");
   const [fromTime, setFromTime] = useState("");
   const [toTime, setToTime] = useState("");
@@ -26,13 +24,12 @@ const BookRoom = () => {
   const onToTimeChange = event => setToTime(event.target.value);
   const onDateChange = event => setDate(event.target.value);
 
-
   const cancel = () => {
     history.push("/list-room");
   };
 
   const chanageState = () => {
-    if(isBookingAllowed) {
+    if (isBookingAllowed) {
       isBookingAllowed = !isBookingAllowed;
     }
   };
@@ -47,8 +44,8 @@ const BookRoom = () => {
       };
       var bookingDetail = { name, bookedRooms };
       customers.push(bookingDetail);
-      history.push("/list-room");
-      console.log(customers);
+      alert("Room Booked Successfully");
+      history.push("/bookings");
     } else {
       alert("Room Not Available");
     }
@@ -67,21 +64,21 @@ const BookRoom = () => {
               fromTime < customers[i].bookedRooms.toTime
             ) {
               console.log(1, isBookingAllowed);
-              chanageState()
+              chanageState();
               break;
             } else if (
               toTime > customers[i].bookedRooms.fromTime &&
               toTime <= customers[i].bookedRooms.toTime
             ) {
               console.log(2, isBookingAllowed);
-              chanageState()
+              chanageState();
               break;
             } else if (
               fromTime < customers[i].bookedRooms.fromTime &&
               toTime > customers[i].bookedRooms.toTime
             ) {
-              console.log(3,isBookingAllowed);
-              chanageState()
+              console.log(3, isBookingAllowed);
+              chanageState();
             }
           }
         }

@@ -5,6 +5,12 @@ import rooms from "../dataBase/roomDb";
 import routes from "../routes/routes";
 
 const CreateRoom = () => {
+
+  const jumboMargin = {
+    paddingTop: "20px",
+    paddingBottom: "10px"
+  };
+
   const history = useHistory();
 
   const [roomName, setRoomName] = useState("");
@@ -43,13 +49,14 @@ const CreateRoom = () => {
       alert("Please fill all the details");
     } else {
       rooms.push(newRoom);
-      history.push(routes.home);
+      alert("New room successfully created");
+      history.push(routes.listRoom);
     }
   };
 
   return (
     <div className="container">
-      <Jumbotron>
+      <Jumbotron style={jumboMargin}>
         <h3> Create New Room</h3>
         <Form>
           <Form.Group controlId="roomName">
