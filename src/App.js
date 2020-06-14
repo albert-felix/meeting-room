@@ -16,14 +16,14 @@ import ListRoom from "./pages/listRoom";
 import Bookings from "./pages/bookings";
 
 export default function App() {
-  const location = useLocation();
-  const history = useHistory();
+  // const location = useLocation();
+  // const history = useHistory();
 
-  useEffect(() => {
-    if (location.pathname === "/") {
-      history.push("/home");
-    }
-  });
+  // useEffect(() => {
+  //   if (location.pathname === "/") {
+  //     history.push("/home");
+  //   }
+  // });
 
   return (
     <div className="App">
