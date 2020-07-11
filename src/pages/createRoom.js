@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Button, Jumbotron } from "react-bootstrap";
-import rooms from "../dataBase/roomDb";
 import routes from "../routes/routes";
 
 const CreateRoom = () => {
-
   const jumboMargin = {
     paddingTop: "20px",
     paddingBottom: "10px"
@@ -32,25 +30,51 @@ const CreateRoom = () => {
   };
   const onPriceChange = event => setPricePerHour(event.target.value);
 
-  const newRoom = {
-    roomName,
-    seatsAvailable,
-    amenitiesAvailable,
-    pricePerHour
-  };
+  const addRoom = async event => {
+    event.preventDefault();
 
-  const addRoom = event => {
-    if (
-      !roomName ||
-      !seatsAvailable ||
-      amenitiesAvailable.length === 0 ||
-      !pricePerHour
-    ) {
-      alert("Please fill all the details");
-    } else {
-      rooms.push(newRoom);
-      alert("New room successfully created");
-      history.push(routes.listRoom);
+    try {
+      const newRoom = {
+        roomName: roomName,
+        seatCapacity: seatsAvailable,
+        amenitiesAvailable: amenitiesAvailable,
+        price: pricePerHour
+      };
+
+      if (
+        !roomName ||
+        !seatsAvailable ||
+        amenitiesAvailable.length === 0 ||
+        !pricePerHour
+      ) {
+        alert("Please fill all the details");
+      } else {
+        const config = {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/JSON"
+          },
+          body: JSON.stringify(newRoom)
+        };
+
+        const response = await fetch(
+          "https://e1pct.sse.codesandbox.io/list-room/newRoom",
+          config
+        );
+        const data = await response.json();
+
+        if (data.status === "SUCCESS") {
+          alert("New room successfully created");
+          history.push(routes.listRoom);
+        } else {
+          console.error();
+          alert("Something Went Wrong");
+        }
+      }
+    } catch (e) {
+      console.error(e);
+      alert("Something Went Wrong");
     }
   };
 
