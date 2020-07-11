@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Jumbotron,
   ListGroup,
@@ -7,10 +7,17 @@ import {
   Col,
   Button
 } from "react-bootstrap";
-import {useHistory} from "react-router-dom";
-import rooms from "../dataBase/roomDb";
+import { useHistory } from "react-router-dom";
 
 const ListRoom = () => {
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    fetch("https://e1pct.sse.codesandbox.io/list-room")
+      .then(response => response.json())
+      .then(data => setRooms(data.rooms))
+      .catch(console.error());
+  }, []);
 
   const history = useHistory();
 
@@ -35,8 +42,8 @@ const ListRoom = () => {
         <Row>
           {rooms.map((room, roomIndex) => {
             const bookRoom = () => {
-              window.localStorage.setItem("roomIndex",roomIndex)
-              history.push('/book-room')
+              window.localStorage.setItem("roomIndex", roomIndex);
+              history.push("/book-room");
             };
 
             return (
@@ -49,7 +56,7 @@ const ListRoom = () => {
                     <b>Room Name :</b> {room.roomName}
                   </p>
                   <p>
-                    <b>Seats Available :</b> {room.seatsAvailable}
+                    <b>Seats Available :</b> {room.seatCapacity}
                   </p>
                   <ListGroup>
                     <b>Amenities Available</b>
@@ -73,7 +80,7 @@ const ListRoom = () => {
                   </ListGroup>
                   <br />
                   <p>
-                    <b>Price :</b> {room.pricePerHour} /hr
+                    <b>Price :</b> {room.price} /hr
                   </p>
                   <Button variant="info" size="sm" onClick={bookRoom}>
                     Book
