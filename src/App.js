@@ -10,6 +10,8 @@ import ListRoom from "./pages/listRoom";
 import Bookings from "./pages/bookings";
 import SignUp from "./pages/signUp";
 import Login from "./pages/login";
+import ForgotPassword from "./pages/forgotPassword";
+import ResetPassword from "./pages/resetPassword";
 
 export default function App() {
   const location = useLocation();
@@ -41,6 +43,12 @@ export default function App() {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/forget-password">
+          <ForgotPassword />
+        </Route>
+        <Route path="/reset-password/:id">
+          <ResetPassword />
         </Route>
       </Switch>
     </div>

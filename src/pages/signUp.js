@@ -50,6 +50,7 @@ const SignUp = () => {
         setUserLoggedIn();
         window.localStorage.setItem("jwtToken", data.jwtToken);
         window.localStorage.setItem("email", email);
+        window.localStorage.setItem("name", response.name);
         history.push(routes.home);
       } else {
         console.error(data);

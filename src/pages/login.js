@@ -32,6 +32,7 @@ const Login = () => {
         }
         window.localStorage.setItem("jwtToken", response.jwtToken);
         window.localStorage.setItem("email", email);
+        window.localStorage.setItem("name", response.name);
         alert("Successfully Logged In");
         history.push(routes.home);
       } else {

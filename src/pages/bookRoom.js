@@ -12,14 +12,13 @@ import { useHistory } from "react-router-dom";
 import customers from "../dataBase/customerDb";
 
 const BookRoom = () => {
-  const [name, setName] = useState("");
+  const name = window.localStorage.getItem("name");
   const [fromTime, setFromTime] = useState("");
   const [toTime, setToTime] = useState("");
   const [date, setDate] = useState("");
 
   var isBookingAllowed = true;
 
-  const onNameChange = event => setName(event.target.value);
   const onFromTimeChange = event => setFromTime(event.target.value);
   const onToTimeChange = event => setToTime(event.target.value);
   const onDateChange = event => setDate(event.target.value);
@@ -151,7 +150,7 @@ const BookRoom = () => {
                 <Form.Group controlId="name">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
-                    onChange={onNameChange}
+                    value={name}
                     type="text"
                     placeholder="Full Name"
                     required
