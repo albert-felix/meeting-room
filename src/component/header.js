@@ -1,16 +1,17 @@
 import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import routes from "../routes/routes";
 import useUserProvider from "../store/UserProvider/useUserProvider";
 
 const Header = () => {
-  const { isUserLoggedIn,isAdmin } = useUserProvider();
+  const { isUserLoggedIn, isAdmin } = useUserProvider();
+  const history = useHistory();
 
   const logout = () => {
     window.localStorage.removeItem("jwtToken");
     window.localStorage.removeItem("email");
-    window.location.reload();
+    history.push("/");
   };
 
   return (
@@ -56,9 +57,7 @@ const Header = () => {
             ) : null}
           </Nav>
           <Nav>
-            {isUserLoggedIn ? (
-              null
-            ) : (
+            {isUserLoggedIn ? null : (
               <NavLink
                 to={routes.signUp}
                 className={"nav-link"}
