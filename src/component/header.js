@@ -12,6 +12,7 @@ const Header = () => {
     window.localStorage.removeItem("jwtToken");
     window.localStorage.removeItem("email");
     history.push("/");
+    window.location.reload();
   };
 
   return (
