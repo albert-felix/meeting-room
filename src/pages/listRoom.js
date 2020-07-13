@@ -13,7 +13,7 @@ const ListRoom = () => {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    fetch("https://e1pct.sse.codesandbox.io/list-room")
+    fetch("https://e1pct.sse.codesandbox.io/room/list-room")
       .then(response => response.json())
       .then(data => setRooms(data.rooms))
       .catch(console.error());

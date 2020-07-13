@@ -59,7 +59,7 @@ const CreateRoom = () => {
         };
 
         const response = await fetch(
-          "https://e1pct.sse.codesandbox.io/list-room/newRoom",
+          "https://e1pct.sse.codesandbox.io/newRoom",
           config
         );
         const data = await response.json();

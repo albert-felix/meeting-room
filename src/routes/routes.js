@@ -3,7 +3,8 @@ const routes = {
   bookRoom: "/book-room",
   createRoom: "create-room",
   listRoom: "list-room",
-  bookings: "bookings"
+  bookings: "bookings",
+  signUp: "sign-up"
 };
 
 export default routes;
