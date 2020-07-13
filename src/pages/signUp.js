@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import routes from "../routes/routes";
-// import useUserProvider from "../store/UserProvider/useUserProvider";
+import useUserProvider from "../store/UserProvider/useUserProvider";
 
 const SignUp = () => {
   const history = useHistory();
@@ -12,7 +12,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const { setUserLoggedIn } = useUserProvider();
+  const { setUserLoggedIn } = useUserProvider();
 
   const onfirstNameChange = event => setFirstName(event.target.value);
   const onLastNameChange = event => setLastName(event.target.value);
@@ -47,7 +47,7 @@ const SignUp = () => {
 
       if (data.status === "SUCCESS") {
         alert("User created");
-        // setUserLoggedIn();
+        setUserLoggedIn();
         window.localStorage.setItem("jwtToken", data.jwtToken);
         window.localStorage.setItem("email", email);
         history.push(routes.home);

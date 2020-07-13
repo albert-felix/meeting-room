@@ -8,8 +8,12 @@ import {
   Button
 } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import useUserProvider from "../store/UserProvider/useUserProvider";
+
 
 const ListRoom = () => {
+  const { isUserLoggedIn } = useUserProvider();
+
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
@@ -42,8 +46,13 @@ const ListRoom = () => {
         <Row>
           {rooms.map((room, roomIndex) => {
             const bookRoom = () => {
-              window.localStorage.setItem("roomIndex", roomIndex);
-              history.push("/book-room");
+              if(isUserLoggedIn) {
+                window.localStorage.setItem("roomIndex", roomIndex);
+                history.push("/book-room");
+              }
+              else {
+                alert("Login to Book Rooms")
+              }
             };
 
             return (

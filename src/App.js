@@ -9,6 +9,7 @@ import CreateRoom from "./pages/createRoom";
 import ListRoom from "./pages/listRoom";
 import Bookings from "./pages/bookings";
 import SignUp from "./pages/signUp";
+import Login from "./pages/login";
 
 export default function App() {
   const location = useLocation();
@@ -37,6 +38,9 @@ export default function App() {
         </Route>
         <Route path="/sign-up">
           <SignUp />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
       </Switch>
     </div>

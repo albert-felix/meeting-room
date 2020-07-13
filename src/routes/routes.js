@@ -4,7 +4,8 @@ const routes = {
   createRoom: "create-room",
   listRoom: "list-room",
   bookings: "bookings",
-  signUp: "sign-up"
+  signUp: "sign-up",
+  login: "login"
 };
 
 export default routes;
