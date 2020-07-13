@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel, Jumbotron, ListGroup, Badge } from "react-bootstrap";
+import { Carousel, Jumbotron, Badge } from "react-bootstrap";
 
 const Home = () => {
   const flex = {
