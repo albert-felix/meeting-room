@@ -11,7 +11,7 @@ const Login = () => {
 
   const history = useHistory();
 
-  const { setUserLoggedIn, setAdminUser, setNotAdminUser } = useUserProvider();
+  const { setUserLoggedIn, setAdminUser, setMailVerified } = useUserProvider();
 
   const onEmailChange = event => setEmail(event.target.value);
   const onPasswordChange = event => setPassword(event.target.value);
@@ -27,8 +27,9 @@ const Login = () => {
         setUserLoggedIn();
         if (response.admin) {
           setAdminUser();
-        } else {
-          setNotAdminUser();
+        }
+        if (response.confirmation) {
+          setMailVerified();
         }
         window.localStorage.setItem("jwtToken", response.jwtToken);
         window.localStorage.setItem("email", email);

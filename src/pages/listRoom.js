@@ -10,9 +10,8 @@ import {
 import { useHistory } from "react-router-dom";
 import useUserProvider from "../store/UserProvider/useUserProvider";
 
-
 const ListRoom = () => {
-  const { isUserLoggedIn } = useUserProvider();
+  const { isUserLoggedIn, isMailVerified} = useUserProvider();
 
   const [rooms, setRooms] = useState([]);
 
@@ -46,12 +45,15 @@ const ListRoom = () => {
         <Row>
           {rooms.map((room, roomIndex) => {
             const bookRoom = () => {
-              if(isUserLoggedIn) {
-                window.localStorage.setItem("roomIndex", roomIndex);
-                history.push("/book-room");
-              }
-              else {
-                alert("Login to Book Rooms")
+              if (isUserLoggedIn) {
+                if (isMailVerified) {
+                  window.localStorage.setItem("roomIndex", roomIndex);
+                  history.push("/book-room");
+                } else {
+                  alert("Verify Mail to Book Rooms");
+                }
+              } else {
+                alert("Login to Book Rooms");
               }
             };
 

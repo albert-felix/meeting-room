@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 
 const isUserLoggedIn = false;
 const isAdmin = false;
+const isMailVerified = false;
 
 export const userContext = createContext(isUserLoggedIn);
 
@@ -10,11 +11,12 @@ const { Provider } = userContext;
 const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn);
   const [isAdminUser, setAdminUser] = useState(isAdmin);
+  const [isConfirmed, setConfirmed] = useState(isMailVerified);
 
   const loginUser = () => setIsLoggedIn(true);
   const logoutUser = () => setIsLoggedIn(false);
   const adminUser = () => setAdminUser(true);
-  const notAdminUser = () => setAdminUser(false);
+  const mailConfirmed = () => setConfirmed(true);
 
   return (
     <Provider
@@ -24,7 +26,8 @@ const UserProvider = ({ children }) => {
         setUserLoggedOut: logoutUser,
         isAdmin: isAdminUser,
         setAdminUser: adminUser,
-        setNotAdminUser: notAdminUser
+        isMailVerified: isConfirmed,
+        setMailVerified: mailConfirmed
       }}
     >
       {children}
