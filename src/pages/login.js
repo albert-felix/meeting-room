@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import loginRequest from "../services/loginRequest";
 import routes from "../routes/routes";
 import useUserProvider from "../store/UserProvider/useUserProvider";
@@ -71,7 +71,9 @@ const Login = () => {
           <Button onClick={loginSubmit} variant="dark" type="submit">
             Login
           </Button>
-        <a href="/forgot-password" style={{margin:"20px"}}>Forgot Password</a>
+          <NavLink className={"nav-link"} to="/forgot-password">
+            Forgot Password
+          </NavLink>
         </Form>
       </div>
     </Fragment>
