@@ -71,6 +71,7 @@ const Login = () => {
           <Button onClick={loginSubmit} variant="dark" type="submit">
             Login
           </Button>
+        <a href="/forgot-password" style={{margin:"20px"}}>Forgot Password</a>
         </Form>
       </div>
     </Fragment>

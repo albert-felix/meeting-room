@@ -45,7 +45,7 @@ export default function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/forget-password">
+        <Route path="/forgot-password">
           <ForgotPassword />
         </Route>
         <Route path="/reset-password/:id">
