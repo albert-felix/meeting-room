@@ -12,6 +12,7 @@ import SignUp from "./pages/signUp";
 import Login from "./pages/login";
 import ForgotPassword from "./pages/forgotPassword";
 import ResetPassword from "./pages/resetPassword";
+import VerifyUser from "./pages/verifyUser";
 
 export default function App() {
   const location = useLocation();
@@ -49,6 +50,9 @@ export default function App() {
         </Route>
         <Route path="/reset-password/:id">
           <ResetPassword />
+        </Route>
+        <Route path="/verify-user/:id">
+          <VerifyUser />
         </Route>
       </Switch>
     </div>
