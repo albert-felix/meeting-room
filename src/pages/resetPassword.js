@@ -33,7 +33,7 @@ const ResetPassword = () => {
         };
 
         const response = await fetch(
-          "https://e1pct.sse.codesandbox.io/user/reset-password/",
+          "https://meeting-room-backend.herokuapp.com/user/reset-password/",
           config
         );
         const data = await response.json();
