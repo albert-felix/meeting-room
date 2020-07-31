@@ -16,7 +16,7 @@ const ListRoom = () => {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    fetch("https://e1pct.sse.codesandbox.io/room/list-room")
+    fetch("https://meeting-room-backend.herokuapp.com/room/list-room")
       .then(response => response.json())
       .then(data => setRooms(data.rooms))
       .catch(console.error());
