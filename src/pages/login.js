@@ -20,7 +20,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const url = "https://e1pct.sse.codesandbox.io/user/login";
+      const url = "https://meeting-room-backend.herokuapp.com/user/login";
       const loginData = { email, password };
       const response = await loginRequest(url, "POST", loginData);
       if (response.status === "SUCCESS") {
