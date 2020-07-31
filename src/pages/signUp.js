@@ -40,7 +40,7 @@ const SignUp = () => {
       };
 
       const response = await fetch(
-        "https://e1pct.sse.codesandbox.io/user/signup",
+        "https://meeting-room-backend.herokuapp.com/user/signup",
         config
       );
       const data = await response.json();
