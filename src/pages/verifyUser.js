@@ -24,7 +24,7 @@ const VerifyUser = () => {
         body: JSON.stringify(userData)
       };
 
-      fetch("https://e1pct.sse.codesandbox.io/user/verify-user", config)
+      fetch("https://meeting-room-backend.herokuapp.com/user/verify-user", config)
         .then(response => response.json())
         .then(data => {
           if (data.status === "SUCCESS") {
