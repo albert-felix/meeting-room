@@ -59,7 +59,7 @@ const CreateRoom = () => {
         };
 
         const response = await fetch(
-          "https://meeting-room-backend.herokuapp.com/newRoom",
+          "https://meeting-room-backend.herokuapp.com/room/newRoom",
           config
         );
         const data = await response.json();
