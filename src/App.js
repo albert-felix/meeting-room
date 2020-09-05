@@ -29,7 +29,9 @@ export default function App() {
       <Header />
       <Switch>
         <Route path={routes.home} component={Home} />
-        <Route path={routes.bookRoom} component={BookRoom} />
+        <Route path="/book-room">
+          < BookRoom/>
+        </Route>
         <Route path="/list-room">
           <ListRoom />
         </Route>
